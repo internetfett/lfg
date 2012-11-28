@@ -1,4 +1,4 @@
 lfg
 ===
 
-LookingForGuild
+Work in Progress: rebuilding LookingForGuild.net from scratch
