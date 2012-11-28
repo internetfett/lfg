@@ -1,0 +1,4 @@
+Follow the link below to activate your account at {{ site.name }}!  This link will 
+remain active for {{ expiration_days }} days.
+
+http://{{ site.domain }}{% url registration_activate activation_key %}
