@@ -31,6 +31,7 @@ class CreateGuildForm(forms.ModelForm):
 
 class GuildPlaytimeForm(forms.ModelForm):
     DAY_CHOICES = (
+        ('', ''),
         ('1', 'Sunday'),
         ('2', 'Monday'),
         ('3', 'Tuesday'),

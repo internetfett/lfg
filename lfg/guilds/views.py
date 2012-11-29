@@ -57,9 +57,9 @@ class UpdateGuildView(GuildMixin, UpdateView):
     template_name = 'guilds/update.html'
 
     def get_context_data(self, **kwargs):
-        context = super(UpdateGuildView, self).get_context_data(**kwargs)
+        context = super(GuildMixin, self).get_context_data(**kwargs)
         if self.request.POST:
-            context['formset'] = GuildPlaytimeFormSet(self.request.POST)
+            context['formset'] = GuildPlaytimeFormSet(self.request.POST, instance=self.get_object())
         else:
             context['formset'] = GuildPlaytimeFormSet(instance=self.get_object())
         return context
