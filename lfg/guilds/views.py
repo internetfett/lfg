@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.simple import redirect_to
 
 from lfg.games.models import Game
@@ -10,13 +10,14 @@ from lfg.guilds.forms import CreateGuildForm, GuildPlaytimeFormSet
 from lfg.guilds.models import Guild
 
 
-class CreateGuildView(CreateView):
+class GuildMixin(object):
     template_name = 'guilds/create.html'
     form_class = CreateGuildForm
     success_url = '/thanks/'
+    model = Guild
 
     def get_context_data(self, **kwargs):
-        context = super(CreateGuildView, self).get_context_data(**kwargs)
+        context = super(GuildMixin, self).get_context_data(**kwargs)
         if self.request.POST:
             context['formset'] = GuildPlaytimeFormSet(self.request.POST)
         else:
@@ -45,4 +46,20 @@ class CreateGuildView(CreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(CreateGuildView, self).dispatch(*args, **kwargs)
+        return super(GuildMixin, self).dispatch(*args, **kwargs)
+
+
+class CreateGuildView(GuildMixin, CreateView):
+    pass
+
+
+class UpdateGuildView(GuildMixin, UpdateView):
+    template_name = 'guilds/update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateGuildView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['formset'] = GuildPlaytimeFormSet(self.request.POST)
+        else:
+            context['formset'] = GuildPlaytimeFormSet(instance=self.get_object())
+        return context
