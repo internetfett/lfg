@@ -9,11 +9,12 @@ from lfg.games.models import Game
 from lfg.guilds.forms import CreateGuildForm, GuildPlaytimeFormSet
 from lfg.guilds.models import Guild
 
+
 class CreateGuildView(CreateView):
     template_name = 'guilds/create.html'
     form_class = CreateGuildForm
     success_url = '/thanks/'
-    
+
     def get_context_data(self, **kwargs):
         context = super(CreateGuildView, self).get_context_data(**kwargs)
         if self.request.POST:
@@ -21,7 +22,7 @@ class CreateGuildView(CreateView):
         else:
             context['formset'] = GuildPlaytimeFormSet()
         return context
-    
+
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = User.objects.get(id=self.request.user.id)
@@ -41,7 +42,7 @@ class CreateGuildView(CreateView):
             return HttpResponseRedirect(self.success_url)
         else:
             return self.render_to_response(self.get_context_data(form=form))
-    
+
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(CreateGuildView, self).dispatch(*args, **kwargs)

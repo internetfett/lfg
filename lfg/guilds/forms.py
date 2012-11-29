@@ -6,6 +6,7 @@ from lfg.games.models import Faction, CharacterClass, CharacterSubclass, Charact
 from lfg.guilds.models import Guild, GuildType, GuildPlaytime
 from lfg.servers.models import Server
 
+
 class CreateGuildForm(forms.ModelForm):
     name = forms.CharField(_('name'), required=True)
     server = forms.ModelChoiceField(label=_('Server'), queryset=Server.objects.all(), required=True)
@@ -17,15 +18,16 @@ class CreateGuildForm(forms.ModelForm):
     classes = forms.ModelMultipleChoiceField(label=_('Class'), queryset=CharacterClass.objects.all(), widget=forms.CheckboxSelectMultiple)
     subclasses = forms.ModelMultipleChoiceField(label=_('Subclass'), queryset=CharacterSubclass.objects.all(), widget=forms.CheckboxSelectMultiple)
     roles = forms.ModelMultipleChoiceField(label=_('Role'), queryset=CharacterRole.objects.all(), widget=forms.CheckboxSelectMultiple)
-    
+
     class Meta:
-       model = Guild
-       fields = ('name', 'server', 'faction', 'guildtype', 'tagline', 'website', 'blurb', 'classes', 'subclasses', 'roles')
-       exclude = ('owner', 'game')
-    
+        model = Guild
+        fields = ('name', 'server', 'faction', 'guildtype', 'tagline', 'website', 'blurb', 'classes', 'subclasses', 'roles')
+        exclude = ('owner', 'game')
+
     def clean(self):
         cleaned_data = super(CreateGuildForm, self).clean()
         return cleaned_data
+
 
 class GuildPlaytimeForm(forms.ModelForm):
     DAY_CHOICES = (
@@ -40,7 +42,7 @@ class GuildPlaytimeForm(forms.ModelForm):
     day = forms.ChoiceField(label=_('Day'), choices=DAY_CHOICES, required=True)
     start_time = forms.TimeField(label=_('Start Time'), required=True)
     end_time = forms.TimeField(label=_('End Time'), required=True)
-    
+
     class Meta:
         model = GuildPlaytime
 
