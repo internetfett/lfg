@@ -35,3 +35,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Dev Database
+dev.db
+
+# Local Settings support
+local_settings.py
