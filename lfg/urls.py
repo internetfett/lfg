@@ -1,8 +1,9 @@
 from django.conf.urls import patterns, include, url
-from lfg.views import HomepageView
-from lfg.guilds.views import CreateGuildView
-
 from django.contrib import admin
+
+from lfg.guilds.views import CreateGuildView
+from lfg.views import HomepageView
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
