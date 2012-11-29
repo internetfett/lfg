@@ -4,9 +4,10 @@ from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import CreateView
 from django.views.generic.simple import redirect_to
+
 from lfg.games.models import Game
-from lfg.guilds.models import Guild
 from lfg.guilds.forms import CreateGuildForm, GuildPlaytimeFormSet
+from lfg.guilds.models import Guild
 
 class CreateGuildView(CreateView):
     template_name = 'guilds/create.html'

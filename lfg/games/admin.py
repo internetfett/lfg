@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from lfg.games.models import Game, Faction, CharacterClass, CharacterSubclass, CharacterRole, CharacterRace
 
 class GameAdmin(admin.ModelAdmin):

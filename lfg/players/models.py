@@ -1,7 +1,9 @@
+from datetime import datetime
+
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
-from datetime import datetime
+
 from lfg.games.models import Game, Faction, CharacterClass, CharacterSubclass, CharacterRole
 from lfg.servers.models import Server
 

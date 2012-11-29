@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from lfg.guilds.models import GuildType, Guild, GuildPlaytime
 
 class GuildPlaytimeInline(admin.TabularInline):

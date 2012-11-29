@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from lfg.servers.models import ServerRegion, ServerType, ServerTimezone, Server
 
 class ServerRegionAdmin(admin.ModelAdmin):

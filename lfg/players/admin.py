@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from lfg.players.models import Player, PlayerPlaytime
 
 class PlayerPlaytimeInline(admin.TabularInline):
