@@ -1,0 +1,4 @@
+Django==1.4.1
+South==0.7.6
+django-registration==0.8.0
+django-subdomains==2.0.1

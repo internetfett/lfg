@@ -133,7 +133,7 @@ INSTALLED_APPS = (
     'south',
     'registration',
     'subdomains',
-    'tastypie',
+    #'tastypie',
     'lfg.games',
     'lfg.guilds',
     'lfg.players',
