@@ -1,4 +1,12 @@
 # Django settings for lfg project.
+from os.path import realpath, abspath, join, dirname
+
+def _path(*args):
+    """ Join and return the full absolute path with link resolved. """
+    return realpath(abspath(join(*args)))
+    
+# Directory that holds the project's python module.
+_SRC_ROOT = _path(dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -118,7 +126,7 @@ SUBDOMAIN_URLCONFS = {}
 WSGI_APPLICATION = 'lfg.wsgi.application'
 
 TEMPLATE_DIRS = (
-    "/var/www/lfg/lfg/templates",
+	_path(_SRC_ROOT, 'templates'),
 )
 
 INSTALLED_APPS = (
