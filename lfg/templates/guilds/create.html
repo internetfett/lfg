@@ -6,7 +6,6 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="hidden" id="id_game" name="game" value="{{ game_id }}">
         {{ formset.management_form }}
         {% for guildplaytime in formset %}
         <div id="guildplaytime-{{ forloop.counter0 }}">
