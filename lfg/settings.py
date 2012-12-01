@@ -15,6 +15,8 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+AUTH_PROFILE_MODULE = 'user_profile.LFGProfile'
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -130,6 +132,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    # Python/Core
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -138,10 +141,15 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+
+    # 3rd Party
     'south',
     'registration',
     'subdomains',
     #'tastypie',
+
+    # Project
+    "lfg.user_profile",
     'lfg.games',
     'lfg.guilds',
     'lfg.players',
