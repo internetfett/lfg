@@ -16,6 +16,7 @@ ADMINS = (
 )
 
 AUTH_PROFILE_MODULE = 'user_profile.LFGProfile'
+DEFAULT_GAME_ID = 1
 
 MANAGERS = ADMINS
 
@@ -102,10 +103,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.request',
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
-    'lfg.custom_context_processors.game_info',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,8 +115,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'subdomains.middleware.SubdomainMiddleware',
+    'lfg.middleware.LFGGameMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
