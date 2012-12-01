@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+    {{ object.name }}<br/>
+    {{ object.tagline }}<br/>
+    Server: {{ object.server }} ({{ object.server.region }})<br/>
+    {{ object.description }}
+{% endblock %}
