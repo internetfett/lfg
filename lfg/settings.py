@@ -149,13 +149,15 @@ INSTALLED_APPS = (
     'registration',
     'subdomains',
     #'tastypie',
+    'treebeard',
 
     # Project
-    "lfg.user_profile",
     'lfg.games',
     'lfg.guilds',
+    'lfg.user_messages',
     'lfg.players',
     'lfg.servers',
+    "lfg.user_profile",
 )
 
 # A sample logging configuration. The only tangible logging
