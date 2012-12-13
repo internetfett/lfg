@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ formset.management_form }}
+        {% for playerplaytime in formset %}
+        <div id="playerplaytime-{{ forloop.counter0 }}">
+            {{ playerplaytime }}
+        </div>
+        {% endfor %}
+        <button type="submit">Update Player</button>
+    </form>
+{% endblock %}
